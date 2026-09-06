@@ -32,18 +32,29 @@
 @layer base {
   html {
     scroll-behavior: smooth;
-    /* The sticky header must not cover an anchored section. */
+    /* The fixed header must not cover an anchored section. */
     scroll-padding-top: 5.5rem;
     background-color: var(--color-ink);
     -webkit-text-size-adjust: 100%;
+
+    /* `clip` rather than `hidden`: hidden still produces a scroll container,
+       which some engines will happily pan sideways into empty space. `clip`
+       cannot be scrolled at all. `hidden` stays first as the fallback for
+       engines without `clip`. */
+    overflow-x: hidden;
+    overflow-x: clip;
   }
 
   body {
     background-color: var(--color-ink);
     color: var(--color-cream);
     font-family: var(--font-sans);
-    /* Nothing on this site may cause a sideways scrollbar. */
+    /* Nothing on this site may pan sideways — see the note on html above. */
     overflow-x: hidden;
+    overflow-x: clip;
+    /* A horizontal swipe that runs out of carousel must not become a page
+       gesture (or a browser back-navigation). */
+    overscroll-behavior-x: contain;
   }
 
   h1, h2, h3 {

@@ -42,12 +42,19 @@ export function SwipeRow({
     const track = trackRef.current;
     if (!track) return;
 
-    // scrollLeft runs negative in a right-to-left track, so compare on distance.
-    const travelled = Math.abs(track.scrollLeft);
-    const maximum = track.scrollWidth - track.clientWidth;
+    const items = track.children;
+    const first = items[0]?.getBoundingClientRect();
+    const last = items[items.length - 1]?.getBoundingClientRect();
+    if (!first || !last) return;
 
-    setAtStart(travelled < 12);
-    setAtEnd(maximum - travelled < 12);
+    const box = track.getBoundingClientRect();
+    // Right-to-left runs first→last leftwards, so the leading edge swaps.
+    const rtl = getComputedStyle(track).direction === "rtl";
+    const leadingGap = rtl ? box.right - first.right : first.left - box.left;
+    const trailingGap = rtl ? last.left - box.left : box.right - last.right;
+
+    setAtStart(leadingGap > -12);
+    setAtEnd(trailingGap > -12);
   }, []);
 
   useEffect(() => {
@@ -82,6 +89,9 @@ export function SwipeRow({
         className={cn(
           // Phones: one swipeable row that bleeds to the screen edges.
           "-mx-5 flex snap-x snap-mandatory gap-4 overflow-x-auto px-5 pb-4",
+          // A swipe that runs past the last card stops here rather than
+          // chaining to the page and panning it into empty space.
+          "overscroll-x-contain touch-pan-x",
           // Without matching scroll padding, snapping parks the first card
           // under the row's own padding instead of flush with it.
           "scroll-px-5 md:scroll-px-0",
