@@ -8,7 +8,8 @@
     "start": "next start",
     "typecheck": "tsc --noEmit",
     "placeholders": "node scripts/generate-placeholders.mjs",
-    "build:pages": "EXPORT_STATIC=1 BASE_PATH=/Barbershop- NEXT_PUBLIC_BASE_PATH=/Barbershop- NEXT_PUBLIC_SITE_URL=https://elonyuval.github.io/Barbershop- next build && cp -r out/. . && touch .nojekyll"
+    "build:pages": "EXPORT_STATIC=1 BASE_PATH=/Barbershop- NEXT_PUBLIC_BASE_PATH=/Barbershop- NEXT_PUBLIC_SITE_URL=https://elonyuval.github.io/Barbershop- next build && cp -r out/. . && touch .nojekyll",
+    "assets:fetch": "node scripts/fetch-generated-assets.mjs"
   },
   "dependencies": {
     "clsx": "^2.1.1",

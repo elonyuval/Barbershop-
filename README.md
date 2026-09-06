@@ -149,9 +149,22 @@ Read the security notes at the bottom of the migration before going live.
 
 ---
 
+## Real imagery is one command away
+
+The site currently ships art-directed placeholder panels. A full set of
+AI-generated barbershop photography and two cinematic clips was produced for
+this project but could not be downloaded in the build environment:
+
+```bash
+npm run assets:fetch     # 12 photographs + 2 videos, wired straight in
+npm run build:pages
+```
+
+Details and the prompts behind each asset: `HIGGSFIELD-PROMPTS.md`.
+
 ## Before this goes live for a real client
 
-- [ ] Replace all imagery — `ASSET-GUIDE.md` lists every file and its size.
+- [ ] Replace all imagery — `npm run assets:fetch`, or see `ASSET-GUIDE.md`.
 - [ ] Add the two hero/experience videos, or leave the posters (both work).
 - [ ] Replace the **demo reviews** in `siteConfig.testimonials` with real ones,
       or delete the section. They are labelled as demo content on the page.

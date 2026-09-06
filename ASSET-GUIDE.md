@@ -2,6 +2,11 @@
 
 Every image and video the site uses, where it appears, and how to replace it.
 
+> **There is already a set of real, AI-generated photographs and two video clips
+> waiting for this project** — they just could not be downloaded in the
+> environment the site was built in. Run `npm run assets:fetch` to pull them in
+> and replace everything below in one step. See `HIGGSFIELD-PROMPTS.md`.
+
 **All imagery currently in `/public/media` is a generated placeholder.** They are
 art-directed panels (warm dark gradient, gold hairline frame, line-art motif) so
 the demo reads as designed rather than broken — but they are not photography.

@@ -13,9 +13,21 @@ session's network policy blocks the Higgsfield CDN host
 not on disk here. The site therefore ships with generated placeholder panels
 (see `ASSET-GUIDE.md`).
 
-To use the real assets: open the Higgsfield library, download each item, and
-save it to the path named in the table below. Nothing in the code needs to
-change apart from turning the video `src` values back on in `siteConfig.ts`.
+**To pull them in, run this from a machine with normal internet access:**
+
+```bash
+npm install
+npm run assets:fetch     # downloads all 14, re-encodes the images, switches the videos on
+npm run build:pages      # rebuild the published site
+git add -A && git commit -m "Use the generated photography" && git push
+```
+
+`scripts/fetch-generated-assets.mjs` holds the CDN links and the destination for
+each file. It converts the 2K PNGs to progressive JPEG (a 2K PNG is several
+megabytes), copies the two mp4s in, and sets the video `src` values in
+`config/siteConfig.ts`. The links are time-limited — if any have expired the
+script says so, and you can download those items from the Higgsfield library by
+hand into the paths in the table below.
 
 | # | Asset | Save to |
 |---|---|---|
