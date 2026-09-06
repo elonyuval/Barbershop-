@@ -33,8 +33,8 @@ node scripts/generate-placeholders.mjs
 | File | Where it appears | Size | Ratio | Format | Notes |
 |---|---|---|---|---|---|
 | `media/team/barber-1.jpg` | Our team, booking step 2 | 900×1200 | 3:4 | JPG | Portrait, head and shoulders, dark background |
-| `media/team/barber-2.jpg` | Our team, booking step 2 | 900×1200 | 3:4 | JPG | |
-| `media/team/barber-3.jpg` | Our team, booking step 2 | 900×1200 | 3:4 | JPG | |
+| `media/team/barber-2.jpg` | Our team, booking step 2 | 900×1200 | 3:4 | JPG | Cropped to head-and-shoulders — the wider frame showed another business's logo on the apron |
+| `media/team/barber-3.jpg` | Our team, booking step 2 | 900×1200 | 3:4 | JPG | Same: cropped above the apron text and the background signage |
 | `media/team/barber-4.jpg` | Our team, booking step 2 | 900×1200 | 3:4 | JPG | |
 | `media/gallery/cut-fade.jpg` | Gallery, "Men's Haircut" card | 1200×1500 | 4:5 | JPG | Finished fade from behind |
 | `media/gallery/beard-line.jpg` | Gallery, "Haircut & Beard" card | 1200×1500 | 4:5 | JPG | Beard line-up detail |
