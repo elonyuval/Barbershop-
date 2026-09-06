@@ -1,0 +1,133 @@
+@import "tailwindcss";
+
+/* ---------------------------------------------------------------------------
+   Design tokens.
+   These defaults mirror siteConfig.brand.colors; app/layout.tsx re-declares the
+   same variables inline from the config, so editing siteConfig really does
+   repaint the site.
+   --------------------------------------------------------------------------- */
+@theme {
+  --color-ink: #0c0a09;
+  --color-surface: #141210;
+  --color-raised: #1c1917;
+  --color-gold: #c8a24a;
+  --color-goldsoft: #e2c98a;
+  --color-cream: #f1e9dc;
+  --color-offwhite: #faf7f2;
+  --color-muted: #a8a29e;
+  --color-hairline: rgba(241, 233, 220, 0.12);
+  --color-intro: #e8e3da;
+
+  --font-display: var(--font-playfair), "Times New Roman", Georgia, serif;
+  --font-sans: var(--font-inter), var(--font-heebo), ui-sans-serif, system-ui,
+    -apple-system, "Segoe UI", sans-serif;
+
+  --radius-card: 1rem;
+}
+
+/* ---------------------------------------------------------------------------
+   Base
+   --------------------------------------------------------------------------- */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    /* The sticky header must not cover an anchored section. */
+    scroll-padding-top: 5.5rem;
+    background-color: var(--color-ink);
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background-color: var(--color-ink);
+    color: var(--color-cream);
+    font-family: var(--font-sans);
+    /* Nothing on this site may cause a sideways scrollbar. */
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3 {
+    font-family: var(--font-display);
+    font-weight: 400;
+    letter-spacing: -0.01em;
+  }
+
+  ::selection {
+    background: var(--color-gold);
+    color: var(--color-ink);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-gold);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  /* Locked while the opening screen or a lightbox is open. */
+  body[data-locked="true"] {
+    overflow: hidden;
+  }
+
+  input, textarea, select, button {
+    font: inherit;
+    color: inherit;
+  }
+
+  /* iOS zooms in on any field smaller than 16px. */
+  @media (max-width: 640px) {
+    input, textarea, select {
+      font-size: 16px;
+    }
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   Small, reusable pieces of the design language
+   --------------------------------------------------------------------------- */
+@layer components {
+  .eyebrow {
+    font-size: 0.72rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--color-gold);
+  }
+
+  /* Hairline rule used under section headings and in the intro. */
+  .gold-rule {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--color-gold), transparent);
+  }
+
+  /* Warm, barely-there texture so large dark panels are not flat. */
+  .grain::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.3;
+    mix-blend-mode: overlay;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
+  }
+
+  .card-surface {
+    background: linear-gradient(160deg, #211d1a, var(--color-surface));
+    border: 1px solid var(--color-hairline);
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   Motion
+   Anything decorative must stand down when the visitor asks for less motion.
+   --------------------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
