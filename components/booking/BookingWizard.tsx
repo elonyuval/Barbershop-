@@ -27,6 +27,7 @@ import {
 } from "@/lib/booking";
 import { buildAppointmentICS, downloadICS } from "@/lib/calendar";
 import { useBookingPrefill } from "@/lib/bookingPrefill";
+import { asset } from "@/lib/paths";
 import { useI18n } from "@/lib/i18n";
 import {
   cn,
@@ -399,7 +400,7 @@ export function BookingWizard() {
                           >
                             <span className="relative size-16 shrink-0 overflow-hidden rounded-lg">
                               <Image
-                                src={entry.image}
+                                src={asset(entry.image)}
                                 alt=""
                                 fill
                                 sizes="64px"
@@ -491,7 +492,7 @@ export function BookingWizard() {
                             >
                               <span className="relative size-16 shrink-0 overflow-hidden rounded-lg">
                                 <Image
-                                  src={barber.image}
+                                  src={asset(barber.image)}
                                   alt=""
                                   fill
                                   sizes="64px"

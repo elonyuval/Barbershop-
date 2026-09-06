@@ -1,5 +1,7 @@
 # MODA BARBER CLUB
 
+**Live demo: https://elonyuval.github.io/Barbershop-/**
+
 A complete, working demo site for an upscale men's barbershop — built as a
 template to show barbershop owners and then rebrand for each one.
 
@@ -7,6 +9,29 @@ Cinematic opening screen, dark editorial homepage, and a real booking system
 that stores appointments and prevents double-booking, with a back-office view.
 
 ---
+
+## Publishing
+
+The live demo is a static export of this app, served by GitHub Pages from the
+repository root. To rebuild and republish it:
+
+```bash
+npm run build:pages
+git add -A && git commit -m "Rebuild published site" && git push
+```
+
+That script exports the site with `basePath=/Barbershop-` (GitHub project Pages
+are served from a sub-path) and copies the result to the repository root, next
+to a `.nojekyll` file so the `_next` directory is served untouched.
+
+Hosting it anywhere else — Vercel, Netlify, a plain server — needs no base
+path: `npm run build && npm start`, or `EXPORT_STATIC=1 npm run build` for a
+static bundle in `out/`.
+
+The booking system works fully on the live demo: appointments are saved in your
+own browser, so what you book is visible at
+[`/admin/`](https://elonyuval.github.io/Barbershop-/admin/) in that same
+browser, and nobody else sees it.
 
 ## Running it
 

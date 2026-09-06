@@ -6,6 +6,7 @@ import Reveal from "@/components/ui/Reveal";
 import Section from "@/components/ui/Section";
 import { siteConfig } from "@/config/siteConfig";
 import { useBookingPrefill } from "@/lib/bookingPrefill";
+import { asset } from "@/lib/paths";
 import { useI18n } from "@/lib/i18n";
 import { formatPrice } from "@/lib/utils";
 
@@ -37,7 +38,7 @@ export function Services() {
           >
             <div className="relative aspect-[16/10] overflow-hidden">
               <Image
-                src={service.image}
+                src={asset(service.image)}
                 alt={pick(service.name)}
                 fill
                 sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"

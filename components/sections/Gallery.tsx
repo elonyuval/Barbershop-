@@ -8,6 +8,7 @@ import Reveal from "@/components/ui/Reveal";
 import Section from "@/components/ui/Section";
 import { siteConfig } from "@/config/siteConfig";
 import type { GalleryItem } from "@/config/types";
+import { asset } from "@/lib/paths";
 import { useI18n } from "@/lib/i18n";
 import { cn, fill } from "@/lib/utils";
 
@@ -106,7 +107,7 @@ export function Gallery() {
               aria-label={`${t.gallery.openImage}: ${pick(item.alt)}`}
             >
               <Image
-                src={item.src}
+                src={asset(item.src)}
                 alt={pick(item.alt)}
                 fill
                 loading="lazy"
@@ -154,7 +155,7 @@ export function Gallery() {
             <figure className="relative flex max-h-[86svh] w-full max-w-4xl flex-col items-center">
               <div className="relative h-[70svh] w-full">
                 <Image
-                  src={active.src}
+                  src={asset(active.src)}
                   alt={pick(active.alt)}
                   fill
                   sizes="90vw"

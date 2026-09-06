@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { siteConfig } from "@/config/siteConfig";
+import { asset } from "@/lib/paths";
 import { cn } from "@/lib/utils";
 
 /**
@@ -18,7 +19,7 @@ export function Logo({ className, href = "/" }: { className?: string; href?: str
     >
       {siteConfig.brand.logoImage ? (
         <Image
-          src={siteConfig.brand.logoImage}
+          src={asset(siteConfig.brand.logoImage)}
           alt={siteConfig.business.name}
           width={132}
           height={34}

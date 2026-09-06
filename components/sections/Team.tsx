@@ -8,6 +8,7 @@ import Reveal from "@/components/ui/Reveal";
 import Section from "@/components/ui/Section";
 import { siteConfig } from "@/config/siteConfig";
 import { useBookingPrefill } from "@/lib/bookingPrefill";
+import { asset } from "@/lib/paths";
 import { useI18n } from "@/lib/i18n";
 
 /** "Sun–Thu 09:00–18:00" style summary, built from the barber's rota. */
@@ -61,7 +62,7 @@ export function Team() {
             >
               <div className="relative aspect-[3/4] overflow-hidden">
                 <Image
-                  src={barber.image}
+                  src={asset(barber.image)}
                   alt={pick(barber.name)}
                   fill
                   sizes="(max-width: 768px) 78vw, (max-width: 1024px) 50vw, 25vw"

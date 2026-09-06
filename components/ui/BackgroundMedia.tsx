@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import { useReducedMotion } from "framer-motion";
 import type { VideoAsset } from "@/config/types";
+import { asset } from "@/lib/paths";
 import { cn } from "@/lib/utils";
 
 /**
@@ -19,7 +20,7 @@ import { cn } from "@/lib/utils";
  * viewport, so a below-the-fold clip costs nothing on first load.
  */
 export function BackgroundMedia({
-  asset,
+  asset: media,
   alt,
   className,
   priority = false,
@@ -54,12 +55,12 @@ export function BackgroundMedia({
     return () => observer.disconnect();
   }, [lazy, near]);
 
-  const showVideo = Boolean(asset.src) && !failed && !reduceMotion && near;
+  const showVideo = Boolean(media.src) && !failed && !reduceMotion && near;
 
   return (
     <div ref={containerRef} className={cn("absolute inset-0 overflow-hidden", className)}>
       <Image
-        src={asset.poster}
+        src={asset(media.poster)}
         alt={alt}
         fill
         priority={priority}
@@ -74,8 +75,8 @@ export function BackgroundMedia({
       {showVideo && (
         <video
           className="absolute inset-0 h-full w-full object-cover"
-          src={asset.src}
-          poster={asset.poster}
+          src={asset(media.src)}
+          poster={asset(media.poster)}
           autoPlay
           muted
           loop

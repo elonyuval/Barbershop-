@@ -1,6 +1,7 @@
 "use client";
 
 import { Facebook, Instagram, MessageCircle, Phone } from "lucide-react";
+import Link from "next/link";
 import { siteConfig } from "@/config/siteConfig";
 import { useI18n } from "@/lib/i18n";
 import Logo from "./Logo";
@@ -71,16 +72,26 @@ export function Footer() {
               {t.footer.explore}
             </h2>
             <ul className="mt-5 space-y-2.5">
-              {links.map((link) => (
-                <li key={link.href}>
-                  <a
-                    href={link.href}
-                    className="inline-block py-1.5 text-sm text-muted transition-colors hover:text-gold"
-                  >
-                    {link.label}
-                  </a>
-                </li>
-              ))}
+              {links.map((link) => {
+                const className =
+                  "inline-block py-1.5 text-sm text-muted transition-colors hover:text-gold";
+
+                return (
+                  <li key={link.href}>
+                    {/* Real routes go through next/link so the base path is
+                        applied; the rest are in-page anchors. */}
+                    {link.href.startsWith("#") ? (
+                      <a href={link.href} className={className}>
+                        {link.label}
+                      </a>
+                    ) : (
+                      <Link href={link.href} className={className}>
+                        {link.label}
+                      </Link>
+                    )}
+                  </li>
+                );
+              })}
             </ul>
           </nav>
 

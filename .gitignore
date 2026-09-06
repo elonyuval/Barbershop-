@@ -10,3 +10,6 @@ npm-debug.log*
 next-env.d.ts
 tsconfig.tsbuildinfo
 .vercel
+
+# Static export staging directory; the published copy lives at the repo root.
+dist

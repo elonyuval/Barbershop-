@@ -4,6 +4,7 @@ import { siteConfig } from "@/config/siteConfig";
 import { dictionaries } from "@/content";
 import { BookingPrefillProvider } from "@/lib/bookingPrefill";
 import { I18nProvider } from "@/lib/i18n";
+import { asset } from "@/lib/paths";
 import { buildLocalBusinessSchema } from "@/lib/schema";
 import "./globals.css";
 
@@ -52,15 +53,15 @@ export const metadata: Metadata = {
     title: defaultDictionary.meta.title,
     description: defaultDictionary.meta.description,
     url: siteUrl,
-    images: [{ url: siteConfig.brand.ogImage, width: 1200, height: 630 }],
+    images: [{ url: asset(siteConfig.brand.ogImage), width: 1200, height: 630 }],
   },
   twitter: {
     card: "summary_large_image",
     title: defaultDictionary.meta.title,
     description: defaultDictionary.meta.description,
-    images: [siteConfig.brand.ogImage],
+    images: [asset(siteConfig.brand.ogImage)],
   },
-  icons: { icon: siteConfig.brand.favicon },
+  icons: { icon: asset(siteConfig.brand.favicon) },
   alternates: { canonical: "/" },
 };
 
