@@ -18,7 +18,8 @@
   --color-hairline: rgba(241, 233, 220, 0.12);
   --color-intro: #e8e3da;
 
-  --font-display: var(--font-playfair), "Times New Roman", Georgia, serif;
+  --font-display: var(--font-playfair), var(--font-frank), "Times New Roman",
+    Georgia, serif;
   --font-sans: var(--font-inter), var(--font-heebo), ui-sans-serif, system-ui,
     -apple-system, "Segoe UI", sans-serif;
 

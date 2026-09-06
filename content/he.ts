@@ -22,6 +22,8 @@ export const he: Dictionary = {
     demoContent: "תוכן דמו",
     languageName: "עברית",
     switchTo: "English",
+    previousItems: "הקודם",
+    nextItems: "הבא",
   },
   nav: {
     home: "בית",

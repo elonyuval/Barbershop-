@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Heebo, Inter, Playfair_Display } from "next/font/google";
+import { Frank_Ruhl_Libre, Heebo, Inter, Playfair_Display } from "next/font/google";
 import { siteConfig } from "@/config/siteConfig";
 import { dictionaries } from "@/content";
 import { BookingPrefillProvider } from "@/lib/bookingPrefill";
@@ -18,6 +18,14 @@ const playfair = Playfair_Display({
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
+  display: "swap",
+});
+
+// Playfair carries no Hebrew glyphs, so Hebrew headings fall through to this.
+const frankRuhl = Frank_Ruhl_Libre({
+  subsets: ["hebrew", "latin"],
+  weight: ["400", "500"],
+  variable: "--font-frank",
   display: "swap",
 });
 
@@ -116,7 +124,7 @@ export default function RootLayout({
     <html
       lang={siteConfig.defaults.language}
       dir={siteConfig.defaults.language === "he" ? "rtl" : "ltr"}
-      className={`${playfair.variable} ${inter.variable} ${heebo.variable}`}
+      className={`${playfair.variable} ${frankRuhl.variable} ${inter.variable} ${heebo.variable}`}
       style={brandVariables as React.CSSProperties}
       suppressHydrationWarning
     >

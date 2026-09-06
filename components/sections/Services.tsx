@@ -3,6 +3,7 @@
 import * as Icons from "lucide-react";
 import Image from "next/image";
 import Reveal from "@/components/ui/Reveal";
+import SwipeRow from "@/components/ui/SwipeRow";
 import Section from "@/components/ui/Section";
 import { siteConfig } from "@/config/siteConfig";
 import { useBookingPrefill } from "@/lib/bookingPrefill";
@@ -28,13 +29,18 @@ export function Services() {
       lede={t.services.lede}
       className="bg-ink"
     >
-      <ul className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+      <SwipeRow
+        label={t.services.title}
+        prevLabel={t.common.previousItems}
+        nextLabel={t.common.nextItems}
+        gridClassName="md:grid-cols-2 lg:grid-cols-3"
+      >
         {siteConfig.services.map((service, index) => (
           <Reveal
             as="li"
             key={service.id}
             delay={index * 0.06}
-            className="group card-surface relative flex flex-col overflow-hidden rounded-card"
+            className="group card-surface relative flex w-[80vw] max-w-[330px] shrink-0 snap-start flex-col overflow-hidden rounded-card md:w-auto md:max-w-none"
           >
             <div className="relative aspect-[16/10] overflow-hidden">
               <Image
@@ -93,7 +99,7 @@ export function Services() {
             </div>
           </Reveal>
         ))}
-      </ul>
+      </SwipeRow>
     </Section>
   );
 }

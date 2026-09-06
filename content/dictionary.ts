@@ -23,6 +23,8 @@ export type Dictionary = {
     demoContent: string;
     languageName: string;
     switchTo: string;
+    previousItems: string;
+    nextItems: string;
   };
   nav: {
     home: string;

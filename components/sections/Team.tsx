@@ -1,11 +1,11 @@
 "use client";
 
-import { ChevronLeft, ChevronRight, Clock } from "lucide-react";
+import { Clock } from "lucide-react";
 import Image from "next/image";
-import { useRef } from "react";
 import { Button } from "@/components/ui/Button";
 import Reveal from "@/components/ui/Reveal";
 import Section from "@/components/ui/Section";
+import SwipeRow from "@/components/ui/SwipeRow";
 import { siteConfig } from "@/config/siteConfig";
 import { useBookingPrefill } from "@/lib/bookingPrefill";
 import { asset } from "@/lib/paths";
@@ -29,16 +29,6 @@ export function Team() {
   const { t, pick } = useI18n();
   const { requestBooking } = useBookingPrefill();
   const summarise = useRotaSummary();
-  const trackRef = useRef<HTMLUListElement>(null);
-
-  // On phones the grid becomes a snap carousel; these nudge it one card along.
-  const scrollByCard = (direction: 1 | -1) => {
-    const track = trackRef.current;
-    if (!track) return;
-    const card = track.querySelector("li");
-    const amount = card ? card.clientWidth + 20 : track.clientWidth * 0.8;
-    track.scrollBy({ left: amount * direction, behavior: "smooth" });
-  };
 
   return (
     <Section
@@ -48,17 +38,18 @@ export function Team() {
       lede={t.team.lede}
       className="bg-surface"
     >
-      <div className="relative">
-        <ul
-          ref={trackRef}
-          className="-mx-5 flex snap-x snap-mandatory gap-5 overflow-x-auto px-5 pb-4 md:mx-0 md:grid md:grid-cols-2 md:overflow-visible md:px-0 md:pb-0 lg:grid-cols-4 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
-        >
+      <SwipeRow
+        label={t.team.title}
+        prevLabel={t.team.previous}
+        nextLabel={t.team.nextBarber}
+        gridClassName="md:grid-cols-2 lg:grid-cols-4"
+      >
           {siteConfig.team.map((barber, index) => (
             <Reveal
               as="li"
               key={barber.id}
               delay={index * 0.06}
-              className="card-surface w-[78vw] max-w-[320px] shrink-0 snap-start overflow-hidden rounded-card sm:w-[60vw] md:w-auto md:max-w-none"
+              className="card-surface w-[80vw] max-w-[330px] shrink-0 snap-start overflow-hidden rounded-card md:w-auto md:max-w-none"
             >
               <div className="relative aspect-[3/4] overflow-hidden">
                 <Image
@@ -107,28 +98,7 @@ export function Team() {
               </div>
             </Reveal>
           ))}
-        </ul>
-
-        {/* Carousel controls, phones only. */}
-        <div className="mt-5 flex justify-center gap-3 md:hidden">
-          <button
-            type="button"
-            onClick={() => scrollByCard(-1)}
-            className="inline-flex size-11 items-center justify-center rounded-full border border-hairline text-cream transition-colors hover:border-gold hover:text-gold"
-            aria-label={t.team.previous}
-          >
-            <ChevronLeft className="size-4 rtl:rotate-180" aria-hidden="true" />
-          </button>
-          <button
-            type="button"
-            onClick={() => scrollByCard(1)}
-            className="inline-flex size-11 items-center justify-center rounded-full border border-hairline text-cream transition-colors hover:border-gold hover:text-gold"
-            aria-label={t.team.nextBarber}
-          >
-            <ChevronRight className="size-4 rtl:rotate-180" aria-hidden="true" />
-          </button>
-        </div>
-      </div>
+      </SwipeRow>
     </Section>
   );
 }

@@ -2,6 +2,7 @@
 
 import { Quote, Star } from "lucide-react";
 import Reveal from "@/components/ui/Reveal";
+import SwipeRow from "@/components/ui/SwipeRow";
 import Section from "@/components/ui/Section";
 import { siteConfig } from "@/config/siteConfig";
 import { useI18n } from "@/lib/i18n";
@@ -23,13 +24,18 @@ export function Testimonials() {
       lede={t.testimonials.lede}
       className="bg-ink"
     >
-      <ul className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+      <SwipeRow
+        label={t.testimonials.title}
+        prevLabel={t.common.previousItems}
+        nextLabel={t.common.nextItems}
+        gridClassName="md:grid-cols-2 lg:grid-cols-3"
+      >
         {siteConfig.testimonials.map((testimonial, index) => (
           <Reveal
             as="li"
             key={testimonial.id}
             delay={index * 0.05}
-            className="card-surface flex flex-col rounded-card p-7"
+            className="card-surface flex w-[80vw] max-w-[330px] shrink-0 snap-start flex-col rounded-card p-7 md:w-auto md:max-w-none"
           >
             <Quote
               className="size-6 text-gold/50 rtl:-scale-x-100"
@@ -69,7 +75,7 @@ export function Testimonials() {
             </div>
           </Reveal>
         ))}
-      </ul>
+      </SwipeRow>
 
       {/*
         Kept visible on purpose: these reviews are written for the template.

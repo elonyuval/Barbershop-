@@ -424,7 +424,9 @@ export const siteConfig: SiteConfig = {
   ],
 
   defaults: {
-    language: "en",
+    // The demo is for Israeli barbershops, so Hebrew (RTL) is what a visitor
+    // lands on. Switch to "en" for an English-first shop.
+    language: "he",
     demoMode: true,
   },
 };

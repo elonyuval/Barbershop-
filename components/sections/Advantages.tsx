@@ -2,6 +2,7 @@
 
 import * as Icons from "lucide-react";
 import Reveal from "@/components/ui/Reveal";
+import SwipeRow from "@/components/ui/SwipeRow";
 import Section from "@/components/ui/Section";
 import { siteConfig } from "@/config/siteConfig";
 import { useI18n } from "@/lib/i18n";
@@ -17,7 +18,12 @@ export function Advantages() {
       lede={t.advantages.lede}
       className="bg-surface"
     >
-      <ul className="grid gap-px overflow-hidden rounded-card border border-hairline bg-hairline sm:grid-cols-2 lg:grid-cols-3">
+      <SwipeRow
+        label={t.advantages.title}
+        prevLabel={t.common.previousItems}
+        nextLabel={t.common.nextItems}
+        gridClassName="md:grid-cols-2 lg:grid-cols-3"
+      >
         {siteConfig.advantages.map((advantage, index) => {
           const Icon =
             (Icons as unknown as Record<string, Icons.LucideIcon>)[advantage.icon] ??
@@ -28,7 +34,7 @@ export function Advantages() {
               as="li"
               key={advantage.id}
               delay={index * 0.05}
-              className="bg-surface p-7 transition-colors duration-500 hover:bg-raised"
+              className="card-surface w-[80vw] max-w-[330px] shrink-0 snap-start rounded-card p-7 transition-colors duration-500 hover:bg-raised md:w-auto md:max-w-none"
             >
               <Icon className="size-6 text-gold" aria-hidden="true" />
               <h3 className="mt-5 text-lg text-offwhite">{pick(advantage.title)}</h3>
@@ -38,7 +44,7 @@ export function Advantages() {
             </Reveal>
           );
         })}
-      </ul>
+      </SwipeRow>
     </Section>
   );
 }
