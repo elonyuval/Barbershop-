@@ -84,8 +84,12 @@ export type Advantage = {
 };
 
 export type VideoAsset = {
-  /** Path under /public. Leave empty to fall back to the poster image alone. */
+  /** MP4 (H.264) path under /public — the universally supported format.
+   *  Leave empty to fall back to the poster image alone. */
   src: string;
+  /** Optional WebM (VP9). Smaller than the MP4; browsers that support it
+   *  pick it first, everything else falls through to `src`. */
+  webm?: string;
   poster: string;
 };
 

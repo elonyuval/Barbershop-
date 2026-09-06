@@ -75,16 +75,20 @@ export function BackgroundMedia({
       {showVideo && (
         <video
           className="absolute inset-0 h-full w-full object-cover"
-          src={asset(media.src)}
           poster={asset(media.poster)}
           autoPlay
           muted
           loop
           playsInline
           preload={priority ? "auto" : "metadata"}
+          // Fires once no listed source can be decoded; the poster stays put.
           onError={() => setFailed(true)}
           aria-label={alt}
-        />
+        >
+          {/* WebM first: smaller, and preferred where supported. */}
+          {media.webm && <source src={asset(media.webm)} type="video/webm" />}
+          <source src={asset(media.src)} type="video/mp4" />
+        </video>
       )}
 
       <style>{`

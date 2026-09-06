@@ -79,25 +79,24 @@ media: {
 
 Prompts for generating both clips are in `HIGGSFIELD-PROMPTS.md`.
 
-### Compressing video for the web
+### Adding or replacing a video
 
-Aim for under ~4 MB per clip. With ffmpeg:
-
-```bash
-ffmpeg -i raw-hero.mp4 -vf "scale=1920:-2,fps=25" \
-  -c:v libx264 -profile:v high -crf 26 -preset slow \
-  -movflags +faststart -an \
-  public/media/video/hero-barbershop.mp4
-```
-
-`-an` strips the audio track: the videos are muted backgrounds and the audio is
-dead weight. `-movflags +faststart` lets playback begin before the whole file
-has downloaded. Generate the poster from the first frame:
+One command does the whole job — compressed MP4, smaller WebM, and a poster cut
+from the first frame so there is no jump when playback starts:
 
 ```bash
-ffmpeg -i public/media/video/hero-barbershop.mp4 -frames:v 1 -q:v 3 \
-  public/media/video/hero-barbershop-poster.jpg
+npm run media:optimise -- ~/Downloads/raw-clip.mp4 hero-barbershop
 ```
+
+It writes `hero-barbershop.mp4`, `hero-barbershop.webm` and
+`hero-barbershop-poster.jpg`, which is exactly what `siteConfig.media` points
+at. The originals here were 10–12 MB each; after this they are **under 1 MB**,
+with the whole `/public/media` folder at ~3.5 MB.
+
+Both formats are offered to the browser: WebM (VP9) is smaller and wins where
+supported, MP4 (H.264) covers everything else. Audio is stripped — these are
+muted backgrounds. If a clip cannot be decoded at all, the poster stays on
+screen and the page is none the wiser.
 
 ---
 

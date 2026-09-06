@@ -97,16 +97,17 @@ export const siteConfig: SiteConfig = {
     },
   },
 
-  // Videos: drop the mp4 files into /public/media/video and put their paths
-  // here. While `src` is empty the poster image is shown on its own with a slow
-  // drift, so nothing ever 404s or flashes an empty player. See ASSET-GUIDE.md.
+  // Set `src` to "" to fall back to the poster image alone, with a slow drift —
+  // useful while a replacement clip is being shot. See ASSET-GUIDE.md.
   media: {
     heroVideo: {
-      src: "",
+      src: "/media/video/hero-barbershop.mp4",
+      webm: "/media/video/hero-barbershop.webm",
       poster: "/media/video/hero-barbershop-poster.jpg",
     },
     experienceVideo: {
-      src: "",
+      src: "/media/video/experience-tools.mp4",
+      webm: "/media/video/experience-tools.webm",
       poster: "/media/video/experience-tools-poster.jpg",
     },
   },

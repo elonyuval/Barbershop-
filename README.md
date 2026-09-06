@@ -149,18 +149,17 @@ Read the security notes at the bottom of the migration before going live.
 
 ---
 
-## Real imagery is one command away
+## Media
 
-The site currently ships art-directed placeholder panels. A full set of
-AI-generated barbershop photography and two cinematic clips was produced for
-this project but could not be downloaded in the build environment:
+Real photography and two cinematic background clips ship with the site. To
+replace a clip:
 
 ```bash
-npm run assets:fetch     # 12 photographs + 2 videos, wired straight in
-npm run build:pages
+npm run media:optimise -- <input.mp4> hero-barbershop
 ```
 
-Details and the prompts behind each asset: `HIGGSFIELD-PROMPTS.md`.
+That produces the compressed MP4, a smaller WebM and a matching poster in one
+step. Every image path lives in `config/siteConfig.ts`; see `ASSET-GUIDE.md`.
 
 ## Before this goes live for a real client
 
