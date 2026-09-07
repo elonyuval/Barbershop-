@@ -12,7 +12,10 @@
   --pole-h: clamp(300px, 62vh, 600px);
   --brand-size: clamp(3.4rem, 16vw, 11.5rem);
   --brand-shift: -4vh;
-  --caption-shift: calc(var(--pole-h) * 0.36);
+  --caption-shift: calc(var(--pole-h) * 0.31);
+  /* How much of the frame the film is allowed to fill. On a wide screen the
+     film is already height-limited, so it runs full size. */
+  --film-scale: 1;
 }
 
 /* The pole must read as standing in front of the wordmark. The letters are
@@ -24,14 +27,17 @@
    is feathered rather than cut, which both looks better and is forgiving if the
    pole in the film is a little wider or narrower than the gap.
 
-   --pole-gap is the one value to nudge if a future film frames the pole
-   differently. */
+   The numbers below are measured, not guessed: the pole's glass is 34.1% of
+   the film's width, so the gap is half of that mapped onto the wordmark's own
+   rendered width — 13% on desktop, 20% on a phone, where the film is scaled to
+   the viewport width and the pole is proportionally much larger. Re-measure
+   with scripts if a future film frames the pole differently. */
 .intro-wordmark {
   /* --cutout is half the gap, as a share of the wordmark's own width.
      Feathered rather than hard-edged: it reads better and is forgiving if the
      pole in the film is a little wider or narrower than the gap. This is the
      one value to nudge if a future film frames the pole differently. */
-  --cutout: 8.5%;
+  --cutout: 13%;
   --feather: 3.5%;
   -webkit-mask-image: linear-gradient(
     90deg,
@@ -56,12 +62,17 @@
 @media (max-width: 768px) {
   .intro-root {
     --pole-h: clamp(260px, 52vh, 440px);
-    --brand-size: clamp(3.6rem, 23vw, 7rem);
+    --brand-size: clamp(3.7rem, 25vw, 7.4rem);
     --brand-shift: -2vh;
-    --caption-shift: calc(var(--pole-h) * 0.56);
+    --caption-shift: calc(var(--pole-h) * 0.46);
+    /* A portrait film fills a portrait screen edge to edge, which makes the
+       pole huge next to the wordmark — far wider than the gap the letters can
+       give up. Backing the film off keeps the pole-to-wordmark relationship
+       the same as on desktop, which is the proportion the reference has. */
+    --film-scale: 0.72;
   }
   /* The pole fills more of a portrait frame, so the gap widens. */
-  .intro-wordmark { --cutout: 10.5%; --feather: 4.5%; }
+  .intro-wordmark { --cutout: 14%; --feather: 4.5%; }
 }
 
 @media (max-width: 380px) {
@@ -75,4 +86,35 @@
     --pole-h: clamp(190px, 60vh, 320px);
     --brand-size: clamp(2.6rem, 11vw, 5rem);
   }
+}
+
+/* The film is scaled about its own centre. Everything it vacates is the same
+   ivory it was shot on, painted by the container, so the edge is invisible. */
+.intro-film {
+  transform: scale(var(--film-scale));
+  transform-origin: 50% 50%;
+}
+
+/* The field is knocked back so the wordmark has something to rise out of.
+   A flat wash would dim the pole too and the chrome would go muddy, so this
+   is a vignette: the centre — where the pole stands — keeps its brightness,
+   and the corners and the caption band below it carry the darkening. */
+.intro-scrim {
+  background:
+    radial-gradient(
+      112% 66% at 50% 37%,
+      rgba(24, 21, 18, 0.05) 0%,
+      rgba(24, 21, 18, 0.09) 30%,
+      rgba(24, 21, 18, 0.34) 68%,
+      rgba(24, 21, 18, 0.60) 100%
+    ),
+    /* The caption sits down here, in light gold on what would otherwise still
+       be ivory. This band is what makes it readable. */
+    linear-gradient(
+      to bottom,
+      rgba(22, 19, 16, 0) 40%,
+      rgba(22, 19, 16, 0.30) 62%,
+      rgba(22, 19, 16, 0.62) 84%,
+      rgba(22, 19, 16, 0.70) 100%
+    );
 }

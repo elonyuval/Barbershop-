@@ -11,26 +11,31 @@ import "./intro.css";
 /**
  * The opening screen.
  *
- * The barber pole is a photoreal product film, not a drawing — see IntroVideo.
+ * The barber pole is a 3D product film rendered in Blender — see IntroVideo.
  * Everything written on top of it (MODA, the rule, the subtitle, ENTER) is a
  * real HTML layer, so the type stays sharp, selectable and translatable rather
- * than being baked into the video where a model would distort the letters.
+ * than being baked into the video.
  *
- * Timing is keyed to the film's camera move rather than to the clock. The shot
- * opens in macro on the chrome top, orbits, then descends and pulls back to a
- * locked-off front view — so nothing is written over it until the camera has
- * settled and the whole pole is centred, or the type would sit over a moving,
- * off-centre frame. INTRO_SETTLE_SECONDS is that landing point; change it there
- * if the film is ever recut and everything else follows.
+ * Timing is keyed to the film's camera move, not to the clock. The shot opens
+ * in macro on the striped glass and pulls back to a locked-off, symmetrical
+ * front view; the stripes turn slowly throughout. Nothing is written over the
+ * frame until the camera has landed and the whole pole is centred, or the type
+ * would sit over a moving, off-centre object.
+ *
+ * Once it lands, the field dims and then the wordmark rises out of it — the
+ * dimming is a scrim here rather than baked into the render, so its depth and
+ * timing stay adjustable without a 25-minute re-render.
  *
  * ENTER stays live until it is pressed; the film holds on its closing frame.
  */
 
 /**
- * When the camera comes to rest dead front. Measured from the film, not
- * guessed — see ASSET-GUIDE.md.
+ * When the camera comes to rest dead front: frame 87 of 96 at 24fps.
+ * Measured from the render, not guessed — if the film is ever recut, change
+ * this one number and every cue below follows it.
  */
-const INTRO_SETTLE_SECONDS = 5.4;
+const INTRO_SETTLE_SECONDS = 3.58;
+
 
 type Props = { onEnter: () => void };
 
@@ -94,12 +99,23 @@ export function IntroScreen({ onEnter }: Props) {
             transition={{ duration: reduceMotion ? 0.05 : 0.9, ease }}
           >
             <IntroVideo
-              portrait={video.portrait}
-              landscape={video.landscape}
+              className="intro-film"
+              src={video.src}
+              webm={video.webm}
               poster={video.poster}
               background={video.background}
             />
           </motion.div>
+
+          {/* --- the field dims once the camera lands, so the wordmark has
+                   something to rise out of --- */}
+          <motion.div
+            className="intro-scrim pointer-events-none absolute inset-0"
+            initial={{ opacity: 0 }}
+            animate={leaving ? { opacity: 1 } : { opacity: 1 }}
+            transition={{ duration: at(1.0), delay: at(INTRO_SETTLE_SECONDS), ease }}
+            aria-hidden="true"
+          />
 
           {/* --- type, layered over the film --- */}
           <div className="pointer-events-none absolute inset-0 grid place-items-center">
@@ -112,18 +128,18 @@ export function IntroScreen({ onEnter }: Props) {
                 letterSpacing: "0.14em",
                 textIndent: "0.14em",
                 textShadow:
-                  "0 1px 0 #ddd8ce, 0 2px 0 #d6d0c5, 0 3px 0 #cec8bc, 0 4px 0 #c6bfb2, 0 5px 1px rgba(60,52,40,0.2), 0 10px 22px rgba(60,52,40,0.22), 0 26px 46px rgba(60,52,40,0.14)",
+                  "0 1px 1px rgba(18,15,12,0.34), 0 6px 18px rgba(18,15,12,0.40)",
               }}
-              initial={{ clipPath: "inset(0 50% 0 50%)", opacity: 0 }}
+              initial={{ clipPath: "inset(0 50% 0 50%)", opacity: 0, y: 26 }}
               animate={
                 leaving
                   ? { opacity: 0, clipPath: "inset(0 0% 0 0%)" }
-                  : { clipPath: "inset(0 -4% 0 -4%)", opacity: 1 }
+                  : { clipPath: "inset(0 -4% 0 -4%)", opacity: 1, y: 0 }
               }
               transition={
                 leaving
                   ? { duration: 0.4, ease }
-                  : { duration: at(1.1), delay: at(INTRO_SETTLE_SECONDS), ease }
+                  : { duration: at(1.2), delay: at(INTRO_SETTLE_SECONDS + 0.55), ease }
               }
             >
               {siteConfig.intro.wordmark}
@@ -138,22 +154,22 @@ export function IntroScreen({ onEnter }: Props) {
                 initial={{ scaleX: 0, opacity: 0 }}
                 animate={leaving ? { opacity: 0 } : { scaleX: 1, opacity: 1 }}
                 transition={
-                  leaving ? { duration: 0.3 } : { duration: at(0.8), delay: at(INTRO_SETTLE_SECONDS + 0.6), ease }
+                  leaving ? { duration: 0.3 } : { duration: at(0.8), delay: at(INTRO_SETTLE_SECONDS + 1.15), ease }
                 }
               />
 
               <motion.p
                 className="mt-4 mb-0 text-[clamp(0.68rem,1.9vw,0.85rem)] uppercase"
                 style={{
-                  color: "var(--color-gold)",
+                  color: "var(--color-goldsoft)",
                   letterSpacing: "0.32em",
                   textIndent: "0.32em",
-                  textShadow: "0 1px 2px rgba(255,255,255,0.5)",
+                  textShadow: "0 1px 3px rgba(18,15,12,0.75), 0 0 18px rgba(18,15,12,0.55)",
                 }}
                 initial={{ opacity: 0, y: 8 }}
                 animate={leaving ? { opacity: 0 } : { opacity: 1, y: 0 }}
                 transition={
-                  leaving ? { duration: 0.3 } : { duration: at(0.7), delay: at(INTRO_SETTLE_SECONDS + 0.9), ease }
+                  leaving ? { duration: 0.3 } : { duration: at(0.7), delay: at(INTRO_SETTLE_SECONDS + 1.40), ease }
                 }
               >
                 {pick(siteConfig.intro.subtitle)}
@@ -164,19 +180,19 @@ export function IntroScreen({ onEnter }: Props) {
                 initial={{ opacity: 0, y: 10 }}
                 animate={leaving ? { opacity: 0 } : { opacity: 1, y: 0 }}
                 transition={
-                  leaving ? { duration: 0.3 } : { duration: at(0.7), delay: at(INTRO_SETTLE_SECONDS + 1.2), ease }
+                  leaving ? { duration: 0.3 } : { duration: at(0.7), delay: at(INTRO_SETTLE_SECONDS + 1.65), ease }
                 }
               >
                 <button
                   type="button"
                   onClick={leave}
-                  className="mt-7 inline-flex items-center rounded-full border px-10 py-3.5 text-[clamp(0.66rem,1.7vw,0.78rem)] uppercase transition-colors duration-300 hover:bg-[#1b1917] hover:text-[#f5f2ec] focus-visible:bg-[#1b1917] focus-visible:text-[#f5f2ec]"
+                  className="mt-7 inline-flex items-center rounded-full border px-10 py-3.5 text-[clamp(0.66rem,1.7vw,0.78rem)] uppercase backdrop-blur-[2px] transition-colors duration-300 hover:bg-[#f5f2ec] hover:text-[#1b1917] focus-visible:bg-[#f5f2ec] focus-visible:text-[#1b1917]"
                   style={{
-                    borderColor: "rgba(28,25,23,0.45)",
-                    color: "#1b1917",
+                    borderColor: "rgba(248,245,238,0.55)",
+                    color: "#f7f4ee",
                     letterSpacing: "0.34em",
                     textIndent: "0.34em",
-                    backgroundColor: "rgba(255,255,255,0.28)",
+                    backgroundColor: "rgba(255,255,255,0.08)",
                   }}
                 >
                   {t.intro.enter}
@@ -190,7 +206,7 @@ export function IntroScreen({ onEnter }: Props) {
               type="button"
               onClick={leave}
               className="absolute top-5 end-5 z-30 rounded-full px-4 py-2 text-[0.68rem] uppercase transition-opacity duration-300 hover:opacity-100"
-              style={{ color: "#57534e", letterSpacing: "0.22em", opacity: 0.55 }}
+              style={{ color: "#f2efe8", letterSpacing: "0.22em", opacity: 0.6 }}
             >
               {t.intro.skip}
             </button>

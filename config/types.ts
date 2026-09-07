@@ -144,13 +144,14 @@ export type SiteConfig = {
   intro: {
     enabled: boolean;
     /**
-     * The opening film. Two cuts of the same shot so neither orientation is
-     * ever stretched or cropped; `background` must match the ivory the video
-     * was shot on, or the letterboxing shows as an edge.
+     * The opening film: one 9:16 master. It is shot on a flat ivory field and
+     * `background` is that same ivory, so letterboxing the portrait clip on a
+     * wide screen is invisible — no second cut is needed. If the two ever
+     * disagree, a hard edge appears down both sides on desktop.
      */
     video: {
-      portrait: { src: string; webm?: string };
-      landscape: { src: string; webm?: string };
+      src: string;
+      webm?: string;
       poster: string;
       background: string;
     };
@@ -158,8 +159,6 @@ export type SiteConfig = {
     showOncePerSession: boolean;
     /** Storage key for the once-per-session flag. */
     sessionKey: string;
-    /** Milliseconds from first paint to the ENTER button appearing. */
-    revealDurationMs: number;
     showSkipButton: boolean;
     wordmark: string;
     subtitle: Localized;

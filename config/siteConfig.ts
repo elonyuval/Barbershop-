@@ -86,23 +86,22 @@ export const siteConfig: SiteConfig = {
 
   intro: {
     enabled: true,
-    // Photoreal barber-pole product film. `background` is sampled from the
-    // video itself so the letterboxed area is invisible.
+    /**
+     * The barber pole is a 3D product film rendered in Blender — real
+     * geometry, real chrome, real reflections. One 9:16 master serves every
+     * screen: the film is shot on a flat ivory field, and `background` is that
+     * exact same ivory, so letterboxing a portrait clip on a wide screen is
+     * invisible rather than a compromise.
+     */
     video: {
-      portrait: {
-        src: "/media/video/intro-pole-portrait.mp4",
-        webm: "/media/video/intro-pole-portrait.webm",
-      },
-      landscape: {
-        src: "/media/video/intro-pole-landscape.mp4",
-        webm: "/media/video/intro-pole-landscape.webm",
-      },
+      src: "/media/video/intro-pole.mp4",
+      webm: "/media/video/intro-pole.webm",
       poster: "/media/video/intro-pole-poster.jpg",
-      background: "#efe9de",
+      /** Sampled from the render. Must match it exactly or the edges show. */
+      background: "#eae4d9",
     },
     showOncePerSession: true,
     sessionKey: "moda:intro-seen",
-    revealDurationMs: 3200,
     showSkipButton: true,
     wordmark: "MODA",
     subtitle: {
