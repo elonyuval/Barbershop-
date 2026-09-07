@@ -18,46 +18,12 @@
   --film-scale: 1;
 }
 
-/* The pole must read as standing in front of the wordmark. The letters are
-   painted above the video and then faded out down the middle, so the object
-   shows through and the type appears to pass behind it.
-
-   The gap is measured in viewport width, not as a share of the wordmark, so it
-   tracks the pole's rendered width rather than the length of the name — and it
-   is feathered rather than cut, which both looks better and is forgiving if the
-   pole in the film is a little wider or narrower than the gap.
-
-   The numbers below are measured, not guessed: the pole's glass is 34.1% of
-   the film's width, so the gap is half of that mapped onto the wordmark's own
-   rendered width — 13% on desktop, 20% on a phone, where the film is scaled to
-   the viewport width and the pole is proportionally much larger. Re-measure
-   with scripts if a future film frames the pole differently. */
-.intro-wordmark {
-  /* --cutout is half the gap, as a share of the wordmark's own width.
-     Feathered rather than hard-edged: it reads better and is forgiving if the
-     pole in the film is a little wider or narrower than the gap. This is the
-     one value to nudge if a future film frames the pole differently. */
-  --cutout: 13%;
-  --feather: 3.5%;
-  -webkit-mask-image: linear-gradient(
-    90deg,
-    #000 0,
-    #000 calc(50% - var(--cutout) - var(--feather)),
-    transparent calc(50% - var(--cutout)),
-    transparent calc(50% + var(--cutout)),
-    #000 calc(50% + var(--cutout) + var(--feather)),
-    #000 100%
-  );
-  mask-image: linear-gradient(
-    90deg,
-    #000 0,
-    #000 calc(50% - var(--cutout) - var(--feather)),
-    transparent calc(50% - var(--cutout)),
-    transparent calc(50% + var(--cutout)),
-    #000 calc(50% + var(--cutout) + var(--feather)),
-    #000 100%
-  );
-}
+/* The wordmark sits OVER the pole, the way the reference does it — the name
+   crosses the object rather than passing behind it. An earlier version masked
+   a gap down the middle of the letters so the pole showed through; that gap is
+   gone deliberately. Nothing here should reintroduce it: the pole is legible
+   under the type because the scrim below darkens the field first, not because
+   the letters get out of the way. */
 
 @media (max-width: 768px) {
   .intro-root {
@@ -71,8 +37,6 @@
        the same as on desktop, which is the proportion the reference has. */
     --film-scale: 0.72;
   }
-  /* The pole fills more of a portrait frame, so the gap widens. */
-  .intro-wordmark { --cutout: 14%; --feather: 4.5%; }
 }
 
 @media (max-width: 380px) {
@@ -96,25 +60,33 @@
 }
 
 /* The field is knocked back so the wordmark has something to rise out of.
-   A flat wash would dim the pole too and the chrome would go muddy, so this
-   is a vignette: the centre — where the pole stands — keeps its brightness,
-   and the corners and the caption band below it carry the darkening. */
+
+   This is the "screen darkens before the logo" beat. It is done here and not
+   in the render on purpose: darkening inside Blender would also darken the
+   film's own backdrop, and the flat colour painted behind the video could no
+   longer match it — the letterbox edge would appear the moment the two drifted
+   apart. As a scrim it is perfectly in step with the wordmark's own cue, and
+   its depth can be retuned without a two-hour re-render.
+
+   A flat wash would kill the chrome, so it is a vignette: the centre, where
+   the pole stands, keeps most of its brightness while the corners and the
+   caption band below carry the darkening. */
 .intro-scrim {
   background:
     radial-gradient(
       112% 66% at 50% 37%,
-      rgba(24, 21, 18, 0.05) 0%,
-      rgba(24, 21, 18, 0.09) 30%,
-      rgba(24, 21, 18, 0.34) 68%,
-      rgba(24, 21, 18, 0.60) 100%
+      rgba(24, 21, 18, 0.20) 0%,
+      rgba(24, 21, 18, 0.30) 30%,
+      rgba(24, 21, 18, 0.56) 68%,
+      rgba(24, 21, 18, 0.76) 100%
     ),
     /* The caption sits down here, in light gold on what would otherwise still
        be ivory. This band is what makes it readable. */
     linear-gradient(
       to bottom,
-      rgba(22, 19, 16, 0) 40%,
-      rgba(22, 19, 16, 0.30) 62%,
-      rgba(22, 19, 16, 0.62) 84%,
-      rgba(22, 19, 16, 0.70) 100%
+      rgba(22, 19, 16, 0) 38%,
+      rgba(22, 19, 16, 0.34) 62%,
+      rgba(22, 19, 16, 0.66) 84%,
+      rgba(22, 19, 16, 0.74) 100%
     );
 }
