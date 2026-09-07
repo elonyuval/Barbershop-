@@ -143,6 +143,17 @@ export type SiteConfig = {
 
   intro: {
     enabled: boolean;
+    /**
+     * The opening film. Two cuts of the same shot so neither orientation is
+     * ever stretched or cropped; `background` must match the ivory the video
+     * was shot on, or the letterboxing shows as an edge.
+     */
+    video: {
+      portrait: { src: string; webm?: string };
+      landscape: { src: string; webm?: string };
+      poster: string;
+      background: string;
+    };
     /** false = the intro plays on every page load, handy while designing it. */
     showOncePerSession: boolean;
     /** Storage key for the once-per-session flag. */

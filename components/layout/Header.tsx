@@ -5,6 +5,7 @@ import { Menu, X } from "lucide-react";
 import { useEffect, useState } from "react";
 import { LinkButton } from "@/components/ui/Button";
 import { useI18n } from "@/lib/i18n";
+import { lockScroll, releaseScroll } from "@/lib/scrollLock";
 import { cn } from "@/lib/utils";
 import LanguageSwitch from "./LanguageSwitch";
 import Logo from "./Logo";
@@ -34,14 +35,9 @@ export function Header() {
   }, []);
 
   useEffect(() => {
-    if (menuOpen) {
-      document.body.dataset.locked = "true";
-    } else {
-      delete document.body.dataset.locked;
-    }
-    return () => {
-      delete document.body.dataset.locked;
-    };
+    if (!menuOpen) return;
+    lockScroll();
+    return releaseScroll;
   }, [menuOpen]);
 
   const links = [

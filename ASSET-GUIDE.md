@@ -52,6 +52,36 @@ consistent brightness or the grid looks patchy.
 
 ---
 
+## The opening screen's film
+
+The barber pole on the intro is a video, not a drawing. Two cuts of the same
+shot are used so neither orientation is stretched or cropped — only one is ever
+downloaded, chosen from the viewport.
+
+| File | Used on | Ratio |
+|---|---|---|
+| `media/video/intro-pole-portrait.mp4` / `.webm` | phones | 9:16 |
+| `media/video/intro-pole-landscape.mp4` / `.webm` | tablets and desktop | 16:9 |
+| `media/video/intro-pole-poster.jpg` | poster, and the fallback if neither decodes | matches the cut |
+
+Prepare each with `npm run media:optimise -- <input> intro-pole-portrait` (and
+again for `intro-pole-landscape`).
+
+Two values in `components/intro/intro.css` are calibrated to how the pole is
+framed in the film, and are the only things to touch if a future film frames it
+differently:
+
+- **`--cutout`** on `.intro-wordmark` — half the gap burned through the MODA
+  wordmark so the pole appears to stand in front of the letters. Set it to
+  `(pole width on screen ÷ 2) ÷ wordmark width × 100`. Currently 8.5% on
+  desktop and 10.5% on phones.
+- **`--caption-shift`** on `.intro-root` — how far below centre the gold rule,
+  subtitle and ENTER sit. It must clear the base of the pole.
+
+`intro.video.background` in `siteConfig` must be sampled from the film's own
+backdrop. The video is letterboxed with `object-fit: contain` against that
+colour, so a mismatch shows as a visible band.
+
 ## Video
 
 | File | Where it appears | Length | Ratio | Format |

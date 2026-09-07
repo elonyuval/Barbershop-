@@ -10,6 +10,7 @@ import { siteConfig } from "@/config/siteConfig";
 import type { GalleryItem } from "@/config/types";
 import { asset } from "@/lib/paths";
 import { useI18n } from "@/lib/i18n";
+import { lockScroll, releaseScroll } from "@/lib/scrollLock";
 import { cn, fill } from "@/lib/utils";
 
 type Filter = "all" | GalleryItem["category"];
@@ -52,10 +53,10 @@ export function Gallery() {
       if (event.key === "ArrowLeft") step(-1);
     };
 
-    document.body.dataset.locked = "true";
+    lockScroll();
     window.addEventListener("keydown", onKeyDown);
     return () => {
-      delete document.body.dataset.locked;
+      releaseScroll();
       window.removeEventListener("keydown", onKeyDown);
     };
   }, [lightboxIndex, close, step]);

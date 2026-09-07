@@ -86,6 +86,20 @@ export const siteConfig: SiteConfig = {
 
   intro: {
     enabled: true,
+    // Photoreal barber-pole product film. `background` is sampled from the
+    // video itself so the letterboxed area is invisible.
+    video: {
+      portrait: {
+        src: "/media/video/intro-pole-portrait.mp4",
+        webm: "/media/video/intro-pole-portrait.webm",
+      },
+      landscape: {
+        src: "/media/video/intro-pole-landscape.mp4",
+        webm: "/media/video/intro-pole-landscape.webm",
+      },
+      poster: "/media/video/intro-pole-poster.jpg",
+      background: "#efe9de",
+    },
     showOncePerSession: true,
     sessionKey: "moda:intro-seen",
     revealDurationMs: 3200,
