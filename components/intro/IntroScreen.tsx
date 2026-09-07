@@ -16,11 +16,21 @@ import "./intro.css";
  * real HTML layer, so the type stays sharp, selectable and translatable rather
  * than being baked into the video where a model would distort the letters.
  *
- * Timing is keyed to the film: nothing is written for the first ~1.6s while the
- * pole settles, then the wordmark opens outward from the centre, the gold rule
- * draws, the subtitle fades up and ENTER arrives last. ENTER stays live until
- * it is pressed; the film holds on its closing frame behind it.
+ * Timing is keyed to the film's camera move rather than to the clock. The shot
+ * opens in macro on the chrome top, orbits, then descends and pulls back to a
+ * locked-off front view — so nothing is written over it until the camera has
+ * settled and the whole pole is centred, or the type would sit over a moving,
+ * off-centre frame. INTRO_SETTLE_SECONDS is that landing point; change it there
+ * if the film is ever recut and everything else follows.
+ *
+ * ENTER stays live until it is pressed; the film holds on its closing frame.
  */
+
+/**
+ * When the camera comes to rest dead front. Measured from the film, not
+ * guessed — see ASSET-GUIDE.md.
+ */
+const INTRO_SETTLE_SECONDS = 5.4;
 
 type Props = { onEnter: () => void };
 
@@ -113,7 +123,7 @@ export function IntroScreen({ onEnter }: Props) {
               transition={
                 leaving
                   ? { duration: 0.4, ease }
-                  : { duration: at(1.2), delay: at(1.6), ease }
+                  : { duration: at(1.1), delay: at(INTRO_SETTLE_SECONDS), ease }
               }
             >
               {siteConfig.intro.wordmark}
@@ -128,7 +138,7 @@ export function IntroScreen({ onEnter }: Props) {
                 initial={{ scaleX: 0, opacity: 0 }}
                 animate={leaving ? { opacity: 0 } : { scaleX: 1, opacity: 1 }}
                 transition={
-                  leaving ? { duration: 0.3 } : { duration: at(0.8), delay: at(2.7), ease }
+                  leaving ? { duration: 0.3 } : { duration: at(0.8), delay: at(INTRO_SETTLE_SECONDS + 0.6), ease }
                 }
               />
 
@@ -143,7 +153,7 @@ export function IntroScreen({ onEnter }: Props) {
                 initial={{ opacity: 0, y: 8 }}
                 animate={leaving ? { opacity: 0 } : { opacity: 1, y: 0 }}
                 transition={
-                  leaving ? { duration: 0.3 } : { duration: at(0.7), delay: at(3.0), ease }
+                  leaving ? { duration: 0.3 } : { duration: at(0.7), delay: at(INTRO_SETTLE_SECONDS + 0.9), ease }
                 }
               >
                 {pick(siteConfig.intro.subtitle)}
@@ -154,7 +164,7 @@ export function IntroScreen({ onEnter }: Props) {
                 initial={{ opacity: 0, y: 10 }}
                 animate={leaving ? { opacity: 0 } : { opacity: 1, y: 0 }}
                 transition={
-                  leaving ? { duration: 0.3 } : { duration: at(0.7), delay: at(3.4), ease }
+                  leaving ? { duration: 0.3 } : { duration: at(0.7), delay: at(INTRO_SETTLE_SECONDS + 1.2), ease }
                 }
               >
                 <button

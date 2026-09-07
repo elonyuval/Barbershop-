@@ -77,6 +77,16 @@ differently:
   desktop and 10.5% on phones.
 - **`--caption-shift`** on `.intro-root` — how far below centre the gold rule,
   subtitle and ENTER sit. It must clear the base of the pole.
+- **`INTRO_SETTLE_SECONDS`** in `components/intro/IntroScreen.tsx` — the moment
+  the camera stops moving and the pole is centred front-on. Nothing is written
+  over the film before then. Read it off the clip (scrub to where the move
+  lands) rather than estimating; every other cue is offset from it.
+
+The film's camera move is deliberate and the type depends on it: it opens in
+extreme macro on the chrome crown from a high angle, orbits around it, then
+descends and dollies out to a locked-off symmetrical front view. If a
+replacement clip does not end locked off and centred, the wordmark will sit
+over a moving frame.
 
 `intro.video.background` in `siteConfig` must be sampled from the film's own
 backdrop. The video is letterboxed with `object-fit: contain` against that
