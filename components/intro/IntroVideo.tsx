@@ -53,10 +53,15 @@ export function IntroVideo({
     if (!video) return;
 
     // Freeze on the closing frame instead of snapping back to the macro.
-    const holdLastFrame = () => {
-      video.pause();
-      video.currentTime = Math.max(0, video.duration - 0.04);
-    };
+    //
+    // Pause and nothing else. An earlier version also seeked to
+    // `duration - 0.04` to be sure of landing on the last frame; in the WebM
+    // that seek resolved to 0 instead, so the film snapped back to the opening
+    // macro the moment it ended and the wordmark rose over the wrong shot. A
+    // video that has ended already holds its final frame, so there is nothing
+    // to seek to — and the clip carries no `loop`, so there is nothing to
+    // guard against either.
+    const holdLastFrame = () => video.pause();
     video.addEventListener("ended", holdLastFrame);
 
     // Some browsers refuse the autoplay promise; the poster then carries it.
