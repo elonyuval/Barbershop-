@@ -145,14 +145,20 @@ export type SiteConfig = {
     enabled: boolean;
     /**
      * The opening film: one 9:16 master. It is shot on a flat ivory field and
-     * `background` is that same ivory, so letterboxing the portrait clip on a
-     * wide screen is invisible — no second cut is needed. If the two ever
+     * `background` is that same warm grey, so letterboxing the portrait clip
+     * on a wide screen is invisible — no second cut is needed. If the two ever
      * disagree, a hard edge appears down both sides on desktop.
      */
     video: {
       src: string;
       webm?: string;
+      /** The settled closing frame — the still shown only if decoding fails. */
       poster: string;
+      /**
+       * The film's own frame 1, used as the <video> poster. It must be frame 1,
+       * not the closing frame, or the open reads as a jump backwards.
+       */
+      firstFrame: string;
       background: string;
     };
     /** false = the intro plays on every page load, handy while designing it. */

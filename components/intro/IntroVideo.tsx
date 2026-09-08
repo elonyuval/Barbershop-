@@ -23,13 +23,22 @@ export function IntroVideo({
   src,
   webm,
   poster,
+  firstFrame,
   background,
   onFirstFrame,
   className,
 }: {
   src: string;
   webm?: string;
+  /** The settled closing frame. Stands in only if the video cannot decode. */
   poster: string;
+  /**
+   * The film's own frame 1. This is the `poster` the <video> shows before
+   * playback starts, and it must be frame 1 rather than the closing frame:
+   * posting the last frame first makes the opening read as a jump backwards
+   * — the settled pole appears, then snaps to the macro as playback begins.
+   */
+  firstFrame: string;
   /** Must match the video's own ivory exactly, or the letterbox edge shows. */
   background: string;
   /** Fired once real pixels are on screen, so nothing flashes before then. */
@@ -65,7 +74,7 @@ export function IntroVideo({
         <video
           ref={videoRef}
           className="absolute inset-0 h-full w-full object-contain"
-          poster={asset(poster)}
+          poster={asset(firstFrame)}
           autoPlay
           muted
           playsInline

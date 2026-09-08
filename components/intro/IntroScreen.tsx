@@ -103,6 +103,7 @@ export function IntroScreen({ onEnter }: Props) {
               src={video.src}
               webm={video.webm}
               poster={video.poster}
+              firstFrame={video.firstFrame}
               background={video.background}
             />
           </motion.div>

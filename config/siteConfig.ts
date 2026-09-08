@@ -80,7 +80,7 @@ export const siteConfig: SiteConfig = {
       poleBlue: "#14367e",
       poleRed: "#cc2027",
       poleWhite: "#f6f4f0",
-      introBackground: "#e8e3da",
+      introBackground: "#c0bab0",
     },
   },
 
@@ -89,16 +89,19 @@ export const siteConfig: SiteConfig = {
     /**
      * The barber pole is a 3D product film rendered in Blender — real
      * geometry, real chrome, real reflections. One 9:16 master serves every
-     * screen: the film is shot on a flat ivory field, and `background` is that
-     * exact same ivory, so letterboxing a portrait clip on a wide screen is
-     * invisible rather than a compromise.
+     * screen: the film is shot on one flat warm-grey field, and `background` is
+     * that exact same grey (sampled off the render's own left and right edges),
+     * so letterboxing a portrait clip on a wide screen is invisible rather than
+     * a compromise.
      */
     video: {
       src: "/media/video/intro-pole.mp4",
       webm: "/media/video/intro-pole.webm",
       poster: "/media/video/intro-pole-poster.jpg",
+      /** The film's frame 1 — shown before playback so the open does not jump. */
+      firstFrame: "/media/video/intro-pole-first.jpg",
       /** Sampled from the render. Must match it exactly or the edges show. */
-      background: "#eae4d9",
+      background: "#c0bab0",
     },
     showOncePerSession: true,
     sessionKey: "moda:intro-seen",
