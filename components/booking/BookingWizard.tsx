@@ -281,7 +281,7 @@ export function BookingWizard() {
       eyebrow={t.booking.eyebrow}
       title={t.booking.title}
       lede={t.booking.lede}
-      className="bg-ink"
+      className="section-base"
     >
       <div ref={headingRef} className="scroll-mt-28 rounded-card border border-hairline bg-surface p-5 sm:p-8">
         {isDemoStorage && !created && (

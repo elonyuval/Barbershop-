@@ -30,7 +30,7 @@ export function CoursesStrip() {
   return (
     <aside
       aria-label={t.courses.navLabel}
-      className="relative border-y border-hairline bg-surface/60 px-5 py-4 sm:px-8 lg:px-12"
+      className="relative border-y border-hairline section-raised px-5 py-4 sm:px-8 lg:px-12"
     >
       <Reveal className="mx-auto flex w-full max-w-6xl flex-col items-start gap-3 sm:flex-row sm:items-center sm:justify-between sm:gap-6">
         <p className="flex items-start gap-3 text-[0.92rem] leading-relaxed text-cream sm:items-center">

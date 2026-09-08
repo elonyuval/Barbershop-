@@ -83,6 +83,7 @@ export const viewport: Viewport = {
 /** siteConfig.brand.colors → the CSS variables the whole design system reads. */
 const brandVariables: Record<string, string> = {
   "--color-ink": siteConfig.brand.colors.background,
+  "--color-ombre": siteConfig.brand.colors.ombreEnd,
   "--color-surface": siteConfig.brand.colors.surface,
   "--color-raised": siteConfig.brand.colors.surfaceRaised,
   "--color-gold": siteConfig.brand.colors.gold,

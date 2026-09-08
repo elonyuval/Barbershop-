@@ -8,13 +8,14 @@
    --------------------------------------------------------------------------- */
 @theme {
   --color-ink: #17130f;
+  --color-ombre: #483d33;
   --color-surface: #221c17;
   --color-raised: #2d251e;
   --color-gold: #c8a24a;
   --color-goldsoft: #e2c98a;
   --color-cream: #f1e9dc;
   --color-offwhite: #faf7f2;
-  --color-muted: #a8a29e;
+  --color-muted: #b8b2ac;
   --color-hairline: rgba(241, 233, 220, 0.12);
   --color-intro: #c6bcb0;
 
@@ -46,7 +47,16 @@
   }
 
   body {
+    /* The page is one ombre, dark at the top and lightening to the footer.
+       It lives on <body> so it spans the whole document rather than repeating
+       per viewport; <html> keeps the top colour so overscroll matches. */
     background-color: var(--color-ink);
+    background-image: linear-gradient(
+      to bottom,
+      var(--color-ink) 0%,
+      var(--color-ombre) 100%
+    );
+    background-repeat: no-repeat;
     color: var(--color-cream);
     font-family: var(--font-sans);
     /* Nothing on this site may pan sideways — see the note on html above. */
@@ -120,8 +130,23 @@
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
   }
 
+  /* Sections alternate by a film of light rather than by their own colour:
+     a solid fill would cut a flat band across the ombre, whereas a translucent
+     wash keeps the same relationship to the page at the top and the bottom. */
+  .section-base {
+    background-color: transparent;
+  }
+
+  .section-raised {
+    background-color: rgb(255 250 242 / 0.05);
+  }
+
   .card-surface {
-    background: linear-gradient(160deg, #211d1a, var(--color-surface));
+    background: linear-gradient(
+      160deg,
+      rgb(255 250 242 / 0.085),
+      rgb(255 250 242 / 0.03)
+    );
     border: 1px solid var(--color-hairline);
   }
 }

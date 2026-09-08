@@ -152,8 +152,10 @@ export type SiteConfig = {
     favicon: string;
     ogImage: string;
     colors: {
-      /** Dark site shell. */
+      /** Dark site shell. `background` is the top of the page's ombre and
+       *  `ombreEnd` the bottom of it; the two are the whole gradient. */
       background: string;
+      ombreEnd: string;
       surface: string;
       surfaceRaised: string;
       /** Warm accent — used sparingly, per the design language. */
