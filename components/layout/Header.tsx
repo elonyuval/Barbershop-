@@ -4,6 +4,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { useEffect, useState } from "react";
 import { LinkButton } from "@/components/ui/Button";
+import { siteConfig } from "@/config/siteConfig";
 import { useI18n } from "@/lib/i18n";
 import { lockScroll, releaseScroll } from "@/lib/scrollLock";
 import { cn } from "@/lib/utils";
@@ -40,10 +41,15 @@ export function Header() {
     return releaseScroll;
   }, [menuOpen]);
 
+  // Courses drop out of the nav entirely when the section is switched off in
+  // siteConfig, so a shop that does not teach never shows a dead anchor.
   const links = [
     { href: "#services", label: t.nav.services },
     { href: "#team", label: t.nav.team },
     { href: "#gallery", label: t.nav.gallery },
+    ...(siteConfig.courses.enabled
+      ? [{ href: "#courses", label: t.courses.navLabel }]
+      : []),
     { href: "#experience", label: t.nav.experience },
     { href: "#reviews", label: t.nav.reviews },
     { href: "#visit", label: t.nav.visit },

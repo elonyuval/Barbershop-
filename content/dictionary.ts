@@ -88,6 +88,43 @@ export type Dictionary = {
     title: string;
     lede: string;
   };
+  courses: {
+    /** The short strip near the top of the page. */
+    strip: {
+      badge: string;
+      text: string;
+      cta: string;
+    };
+    eyebrow: string;
+    title: string;
+    lede: string;
+    navLabel: string;
+    levels: { beginner: string; advanced: string };
+    duration: string;
+    priceOnRequest: string;
+    includes: string;
+    apply: string;
+    /** The lead form. */
+    form: {
+      title: string;
+      lede: string;
+      name: string;
+      namePlaceholder: string;
+      phone: string;
+      phonePlaceholder: string;
+      course: string;
+      note: string;
+      notePlaceholder: string;
+      submit: string;
+      sending: string;
+      /** Says plainly that nothing is transmitted in the demo. */
+      demoNotice: string;
+      successTitle: string;
+      successBody: string;
+      again: string;
+      errors: { name: string; phone: string };
+    };
+  };
   experience: {
     eyebrow: string;
     title: string;

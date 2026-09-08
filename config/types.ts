@@ -93,6 +93,37 @@ export type VideoAsset = {
   poster: string;
 };
 
+/**
+ * One training track offered by the shop. `level` is what the card is filtered
+ * and labelled by, so a shop that only teaches beginners can delete the other
+ * entries and the section still reads correctly.
+ */
+export type Course = {
+  id: string;
+  level: "beginner" | "advanced";
+  name: Localized;
+  /** One sentence under the title. Keep it to a single line on mobile. */
+  summary: Localized;
+  /** Bullet points — what the student actually leaves with. */
+  highlights: Localized[];
+  /** Free text, e.g. "6 weeks" / "2 days". Not parsed, only displayed. */
+  duration: Localized;
+  /** Shown as-is next to the currency. Use null for "price on request". */
+  price: number | null;
+  /** Lucide icon name; falls back to a scissors icon when unknown. */
+  icon: string;
+};
+
+export type CoursesConfig = {
+  /** false removes the strip, the section and the nav link in one switch. */
+  enabled: boolean;
+  /** The short banner near the top of the page that links down to the section. */
+  strip: {
+    enabled: boolean;
+  };
+  courses: Course[];
+};
+
 export type SiteConfig = {
   business: {
     name: string;
@@ -193,6 +224,7 @@ export type SiteConfig = {
   gallery: GalleryItem[];
   testimonials: Testimonial[];
   advantages: Advantage[];
+  courses: CoursesConfig;
 
   defaults: {
     language: Language;

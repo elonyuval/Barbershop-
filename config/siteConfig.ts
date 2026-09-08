@@ -440,6 +440,74 @@ export const siteConfig: SiteConfig = {
     },
   ],
 
+  /**
+   * DEMO COURSES — invented tracks, prices and durations written for this
+   * template. Replace every field before a client goes live.
+   *
+   * Two levels on purpose: "beginner" is the career course for people entering
+   * the trade, "advanced" is the short workshop for barbers already working.
+   * They read to completely different people, so the copy for each is written
+   * separately rather than shared.
+   */
+  courses: {
+    enabled: true,
+    strip: { enabled: true },
+    courses: [
+      {
+        id: "career",
+        level: "beginner",
+        name: { en: "Professional Barbering Course", he: "קורס ספרות מקצועי" },
+        summary: {
+          en: "From your first haircut to working the floor with paying clients.",
+          he: "מהתספורת הראשונה ועד עמידה מול לקוחות משלמים.",
+        },
+        highlights: [
+          { en: "Scissors, clipper and razor from the ground up", he: "מספריים, מכונה ותער מאפס" },
+          { en: "Fades, beard shaping and classic finishes", he: "פייד, עיצוב זקן וסיומות קלאסיות" },
+          { en: "Practice on real clients in the shop", he: "תרגול על לקוחות אמיתיים במספרה" },
+          { en: "Certificate and help finding your first chair", he: "תעודה וליווי למציאת הכיסא הראשון" },
+        ],
+        duration: { en: "12 weeks · twice a week", he: "12 שבועות · פעמיים בשבוע" },
+        price: 6800,
+        icon: "GraduationCap",
+      },
+      {
+        id: "fade-masterclass",
+        level: "advanced",
+        name: { en: "Fade Masterclass", he: "מאסטרקלאס פייד" },
+        summary: {
+          en: "One intense day on the cut clients ask for most.",
+          he: "יום אחד אינטנסיבי על התספורת שהכי מבקשים.",
+        },
+        highlights: [
+          { en: "Skin, low, mid and high fades", he: "סקין, לואו, מיד והיי פייד" },
+          { en: "Clean blending without chasing lines", he: "בלנדינג נקי בלי לרדוף אחרי קווים" },
+          { en: "Working faster without losing precision", he: "לעבוד מהר יותר בלי לאבד דיוק" },
+        ],
+        duration: { en: "1 day · 8 hours", he: "יום אחד · 8 שעות" },
+        price: 900,
+        icon: "Scissors",
+      },
+      {
+        id: "beard-workshop",
+        level: "advanced",
+        name: { en: "Beard & Razor Workshop", he: "סדנת זקן ותער" },
+        summary: {
+          en: "Hot towel, straight razor and beard architecture.",
+          he: "מגבת חמה, תער מיושר וארכיטקטורת זקן.",
+        },
+        highlights: [
+          { en: "Reading a face before you shape a beard", he: "לקרוא פנים לפני שמעצבים זקן" },
+          { en: "Straight razor safely and confidently", he: "עבודה בטוחה ובטוחה בעצמה עם תער" },
+          { en: "The hot-towel ritual clients pay extra for", he: "טקס המגבת החמה שלקוחות משלמים עליו יותר" },
+        ],
+        duration: { en: "2 days · 12 hours", he: "יומיים · 12 שעות" },
+        price: 1400,
+        icon: "UserRound",
+      },
+    ],
+  },
+
   defaults: {
     // The demo is for Israeli barbershops, so Hebrew (RTL) is what a visitor
     // lands on. Switch to "en" for an English-first shop.

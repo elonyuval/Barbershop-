@@ -3,6 +3,8 @@ import Footer from "@/components/layout/Footer";
 import Header from "@/components/layout/Header";
 import SiteShell from "@/components/layout/SiteShell";
 import Advantages from "@/components/sections/Advantages";
+import Courses from "@/components/sections/Courses";
+import CoursesStrip from "@/components/sections/CoursesStrip";
 import Experience from "@/components/sections/Experience";
 import Gallery from "@/components/sections/Gallery";
 import Hero from "@/components/sections/Hero";
@@ -17,9 +19,13 @@ export default function HomePage() {
       <Header />
       <main>
         <Hero />
+        {/* One line under the hero; the full section sits further down so a
+            visitor who came to book is not made to read about courses first. */}
+        <CoursesStrip />
         <Services />
         <Team />
         <Gallery />
+        <Courses />
         <Advantages />
         <Experience />
         <Testimonials />
