@@ -1,2 +1,2 @@
-:HL["/Barbershop-/_next/static/chunks/0__r-iczjbg4-.css","style"]
-0:{"tree":{"name":"","param":null,"prefetchHints":4112,"slots":{"children":{"name":"/_not-found","param":null,"prefetchHints":4160,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":4256,"slots":null}}}}},"staleTime":300,"buildId":"UqwLnNJrj3dsPN96dvmsv"}
+:HL["/Barbershop-/_next/static/chunks/3qj6wisa09iu6.css","style"]
+0:{"tree":{"name":"","param":null,"prefetchHints":4112,"slots":{"children":{"name":"/_not-found","param":null,"prefetchHints":4160,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":4256,"slots":null}}}}},"staleTime":300,"buildId":"_I0tOYxxaQg27y0sPG3KU"}
