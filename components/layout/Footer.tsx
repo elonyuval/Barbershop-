@@ -20,7 +20,7 @@ export function Footer() {
   ];
 
   return (
-    <footer className="border-t border-hairline section-base px-5 pt-16 pb-10 sm:px-8 lg:px-12">
+    <footer className="border-t border-hairline px-5 pt-16 pb-10 sm:px-8 lg:px-12">
       <div className="mx-auto w-full max-w-6xl">
         <div className="grid gap-10 md:grid-cols-4">
           <div className="md:col-span-2">

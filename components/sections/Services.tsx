@@ -27,7 +27,6 @@ export function Services() {
       eyebrow={t.services.eyebrow}
       title={t.services.title}
       lede={t.services.lede}
-      className="section-base"
     >
       <SwipeRow
         label={t.services.title}

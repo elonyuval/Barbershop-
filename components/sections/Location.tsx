@@ -21,7 +21,6 @@ export function Location() {
       id="visit"
       eyebrow={t.location.eyebrow}
       title={t.location.title}
-      className="section-raised"
     >
       <div className="grid gap-10 lg:grid-cols-[1.05fr_1fr] lg:gap-14">
         {/* --- hours --- */}

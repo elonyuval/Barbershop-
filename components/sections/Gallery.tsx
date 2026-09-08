@@ -69,7 +69,6 @@ export function Gallery() {
       eyebrow={t.gallery.eyebrow}
       title={t.gallery.title}
       lede={t.gallery.lede}
-      className="section-base"
     >
       <div className="mb-8 flex flex-wrap gap-2">
         {filters.map((entry) => (

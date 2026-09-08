@@ -36,7 +36,6 @@ export function Courses() {
       eyebrow={t.courses.eyebrow}
       title={t.courses.title}
       lede={t.courses.lede}
-      className="section-raised"
     >
       {(["beginner", "advanced"] as const).map((level) =>
         grouped[level].length === 0 ? null : (

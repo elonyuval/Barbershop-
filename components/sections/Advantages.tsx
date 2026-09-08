@@ -16,7 +16,6 @@ export function Advantages() {
       eyebrow={t.advantages.eyebrow}
       title={t.advantages.title}
       lede={t.advantages.lede}
-      className="section-raised"
     >
       <SwipeRow
         label={t.advantages.title}

@@ -36,7 +36,6 @@ export function Team() {
       eyebrow={t.team.eyebrow}
       title={t.team.title}
       lede={t.team.lede}
-      className="section-raised"
     >
       <SwipeRow
         label={t.team.title}

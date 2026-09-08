@@ -130,17 +130,13 @@
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
   }
 
-  /* Sections alternate by a film of light rather than by their own colour:
-     a solid fill would cut a flat band across the ombre, whereas a translucent
-     wash keeps the same relationship to the page at the top and the bottom. */
-  .section-base {
-    background-color: transparent;
-  }
-
-  .section-raised {
-    background-color: rgb(255 250 242 / 0.05);
-  }
-
+  /* Sections paint nothing at all. They used to alternate — first by their own
+     solid colour, then by a translucent film — and either way the change of
+     tone landed on a hard horizontal line, so the page read as a stack of
+     panels rather than as one surface. The ombre is now the only tone on the
+     page; sections are told apart by their spacing, headings and hairlines.
+     Cards keep a film, because a card is a bounded object rather than a band
+     across the full width. */
   .card-surface {
     background: linear-gradient(
       160deg,

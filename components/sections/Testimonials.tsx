@@ -22,7 +22,6 @@ export function Testimonials() {
       eyebrow={t.testimonials.eyebrow}
       title={t.testimonials.title}
       lede={t.testimonials.lede}
-      className="section-base"
     >
       <SwipeRow
         label={t.testimonials.title}
