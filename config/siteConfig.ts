@@ -68,9 +68,9 @@ export const siteConfig: SiteConfig = {
     favicon: "/favicon.svg",
     ogImage: "/media/brand/og-image.jpg",
     colors: {
-      background: "#0c0a09",
-      surface: "#141210",
-      surfaceRaised: "#1c1917",
+      background: "#17130f",
+      surface: "#221c17",
+      surfaceRaised: "#2d251e",
       gold: "#c8a24a",
       goldSoft: "#e2c98a",
       cream: "#f1e9dc",

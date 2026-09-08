@@ -8,6 +8,9 @@ import { cn } from "@/lib/utils";
 const FILM_W = 608;
 const FILM_H = 1080;
 
+/** The rate the 120 frames are encoded at, so the film runs 4.00s. */
+const FILM_FPS = 30;
+
 /**
  * When the pole clears each pair of frame edges, measured off the rendered
  * frames rather than guessed: it leaves the left and right edges at frame 39
@@ -18,9 +21,12 @@ const FILM_H = 1080;
  * its own pixels reach its own edges, so any letterboxing draws a hard-edged
  * rectangle across the page; after them the edges are flat field, which is the
  * same colour as the box behind, and the boundary cannot be seen.
+ *
+ * They are frame numbers, so they follow the rate: recut the film and only
+ * FILM_FPS needs to change.
  */
-const SIDES_CLEAR_SECONDS = 39 / 24;
-const CAPS_CLEAR_SECONDS = 97 / 24;
+const SIDES_CLEAR_SECONDS = 39 / FILM_FPS;
+const CAPS_CLEAR_SECONDS = 97 / FILM_FPS;
 
 /**
  * The barber pole on the opening screen — a 3D product film rendered in

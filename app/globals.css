@@ -7,9 +7,9 @@
    repaint the site.
    --------------------------------------------------------------------------- */
 @theme {
-  --color-ink: #0c0a09;
-  --color-surface: #141210;
-  --color-raised: #1c1917;
+  --color-ink: #17130f;
+  --color-surface: #221c17;
+  --color-raised: #2d251e;
   --color-gold: #c8a24a;
   --color-goldsoft: #e2c98a;
   --color-cream: #f1e9dc;

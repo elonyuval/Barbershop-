@@ -91,7 +91,7 @@
 
 .intro-film[data-frame="settled"] .intro-film-image {
   transform: scale(var(--film-scale));
-  transition: transform 1200ms cubic-bezier(0.16, 0.84, 0.24, 1);
+  transition: transform 900ms cubic-bezier(0.16, 0.84, 0.24, 1);
 }
 
 /* The decode-failure still is the settled frame, so its edges are already flat
@@ -124,18 +124,18 @@
   background:
     radial-gradient(
       112% 66% at 50% 37%,
-      rgba(24, 21, 18, 0.20) 0%,
-      rgba(24, 21, 18, 0.30) 30%,
-      rgba(24, 21, 18, 0.56) 68%,
-      rgba(24, 21, 18, 0.76) 100%
+      rgba(24, 21, 18, 0.16) 0%,
+      rgba(24, 21, 18, 0.24) 30%,
+      rgba(24, 21, 18, 0.42) 68%,
+      rgba(24, 21, 18, 0.56) 100%
     ),
     /* The caption sits down here, in light gold on what would otherwise still
        be ivory. This band is what makes it readable. */
     linear-gradient(
       to bottom,
       rgba(22, 19, 16, 0) 38%,
-      rgba(22, 19, 16, 0.34) 62%,
-      rgba(22, 19, 16, 0.66) 84%,
-      rgba(22, 19, 16, 0.74) 100%
+      rgba(22, 19, 16, 0.26) 62%,
+      rgba(22, 19, 16, 0.50) 84%,
+      rgba(22, 19, 16, 0.58) 100%
     );
 }
