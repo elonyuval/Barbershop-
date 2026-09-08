@@ -1,4 +1,4 @@
-:HL["/Barbershop-/_next/static/chunks/02vp1ljcm6_b8.css","style"]
+:HL["/Barbershop-/_next/static/chunks/0t6f1-iwj75dh.css","style"]
 :HL["/Barbershop-/_next/static/media/1c9ef42b327f16c7-s.p.0jgv4ivu1938h.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
 :HL["/Barbershop-/_next/static/media/2a65768255d6b625-s.p.3u4lli0-axodc.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
 :HL["/Barbershop-/_next/static/media/83afe278b6a6bb3c-s.p.2bn3s6zvc0dyp.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
@@ -6,4 +6,4 @@
 :HL["/Barbershop-/_next/static/media/910852303c6b2343-s.p.1wvhz6ut8au_x.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
 :HL["/Barbershop-/_next/static/media/da0c36c2f20008af-s.p.1o88h9hhck-f8.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
 :HL["/Barbershop-/_next/static/chunks/3bbk3_6qpd2cs.css","style"]
-0:{"tree":{"name":"","param":null,"prefetchHints":4112,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":4224,"slots":null}}},"staleTime":300,"buildId":"A5wdjk29DZY8cSp-QKV-7"}
+0:{"tree":{"name":"","param":null,"prefetchHints":4112,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":4224,"slots":null}}},"staleTime":300,"buildId":"UeR2-NeZeSJ39m_JVdp_g"}
