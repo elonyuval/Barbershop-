@@ -80,7 +80,7 @@ export const siteConfig: SiteConfig = {
       poleBlue: "#14367e",
       poleRed: "#cc2027",
       poleWhite: "#f6f4f0",
-      introBackground: "#c8c0b5",
+      introBackground: "#c6bcb0",
     },
   },
 
@@ -101,7 +101,7 @@ export const siteConfig: SiteConfig = {
       /** The film's frame 1 — shown before playback so the open does not jump. */
       firstFrame: "/media/video/intro-pole-first.jpg",
       /** Sampled from the render. Must match it exactly or the edges show. */
-      background: "#c8c0b5",
+      background: "#c6bcb0",
     },
     showOncePerSession: true,
     sessionKey: "moda:intro-seen",
