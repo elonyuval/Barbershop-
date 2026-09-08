@@ -30,11 +30,11 @@ import "./intro.css";
  */
 
 /**
- * When the camera comes to rest dead front: frame 112 of 120 at 30fps.
+ * When the camera comes to rest dead front: frame 112 of 120 at 36fps.
  * Measured from the render, not guessed — if the film is ever recut, change
  * this one number and every cue below follows it.
  */
-const INTRO_SETTLE_SECONDS = 112 / 30;
+const INTRO_SETTLE_SECONDS = 112 / 36;
 
 
 type Props = { onEnter: () => void };
