@@ -8,8 +8,8 @@ import { cn } from "@/lib/utils";
 const FILM_W = 608;
 const FILM_H = 1080;
 
-/** The rate the 120 frames are encoded at, so the film runs 3.33s. */
-const FILM_FPS = 36;
+/** The rate the film's 112 frames are encoded at, so it runs 2.49s. */
+const FILM_FPS = 45;
 
 /**
  * When the pole clears each pair of frame edges, measured off the rendered

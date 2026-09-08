@@ -30,11 +30,11 @@ import "./intro.css";
  */
 
 /**
- * When the camera comes to rest dead front: frame 112 of 120 at 36fps.
- * Measured from the render, not guessed — if the film is ever recut, change
- * this one number and every cue below follows it.
+ * When the camera comes to rest dead front: frame 112, the film's last, at
+ * 45fps. Measured from the render, not guessed — if the film is ever recut,
+ * change this one number and every cue below follows it.
  */
-const INTRO_SETTLE_SECONDS = 112 / 36;
+const INTRO_SETTLE_SECONDS = 112 / 45;
 
 
 type Props = { onEnter: () => void };
@@ -128,8 +128,13 @@ export function IntroScreen({ onEnter }: Props) {
                 color: "#fbfaf7",
                 letterSpacing: "0.14em",
                 textIndent: "0.14em",
+                /* A halo, not a drop shadow. The wordmark crosses the glass,
+                   and wherever the helix happens to have stopped there is a
+                   white stripe somewhere under the letters — white on white.
+                   A tight dark edge plus a soft glow separates them without
+                   darkening the whole picture the way a heavier scrim would. */
                 textShadow:
-                  "0 1px 1px rgba(18,15,12,0.34), 0 6px 18px rgba(18,15,12,0.40)",
+                  "0 0 2px rgba(18,15,12,0.60), 0 0 12px rgba(18,15,12,0.72), 0 3px 24px rgba(18,15,12,0.55)",
               }}
               initial={{ clipPath: "inset(0 50% 0 50%)", opacity: 0, y: 26 }}
               animate={

@@ -91,7 +91,7 @@
 
 .intro-film[data-frame="settled"] .intro-film-image {
   transform: scale(var(--film-scale));
-  transition: transform 900ms cubic-bezier(0.16, 0.84, 0.24, 1);
+  transition: transform 700ms cubic-bezier(0.16, 0.84, 0.24, 1);
 }
 
 /* The decode-failure still is the settled frame, so its edges are already flat
