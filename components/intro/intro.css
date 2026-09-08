@@ -52,11 +52,60 @@
   }
 }
 
-/* The film is scaled about its own centre. Everything it vacates is the same
-   ivory it was shot on, painted by the container, so the edge is invisible. */
+/* The film's box is never scaled — it fills the viewport and paints the same
+   ivory the pole was shot on, so there is no rectangle in the page at any point.
+   What moves is the picture inside it.
+
+   The pole runs off its own frame edges for most of the pull-back (it leaves the
+   sides at frame 39 and the top and bottom only at frame 97), so letterboxing it
+   early draws a hard-edged cut-out square across the page. Instead the picture
+   covers the viewport until the film's own backdrop reaches the edges this
+   screen would letterbox, and only then eases back to the intended framing,
+   where inside and outside are the same ivory and the boundary cannot be seen.
+
+   Cropping the opening macro costs nothing: it is a macro, there is no edge to
+   lose. IntroVideo.tsx decides when to make the move and measures --film-cover. */
 .intro-film {
-  transform: scale(var(--film-scale));
+  --film-cover: 1;
+}
+
+/* The state the markup paints in, before a line of JavaScript has run. */
+.intro-film-image {
+  object-fit: cover;
+}
+
+.intro-film[data-frame="bridge"] .intro-film-image,
+.intro-film[data-frame="settled"] .intro-film-image,
+.intro-film-still {
+  object-fit: contain;
   transform-origin: 50% 50%;
+  will-change: transform;
+}
+
+/* Contain at exactly the magnification cover was showing: nothing changes on
+   screen, and the ease now has somewhere to start from. `object-fit` cannot be
+   animated, which is the whole reason this step exists. */
+.intro-film[data-frame="bridge"] .intro-film-image {
+  transform: scale(var(--film-cover));
+}
+
+.intro-film[data-frame="settled"] .intro-film-image {
+  transform: scale(var(--film-scale));
+  transition: transform 1200ms cubic-bezier(0.16, 0.84, 0.24, 1);
+}
+
+/* The decode-failure still is the settled frame, so its edges are already flat
+   field: it goes straight to the intended framing and never covers. */
+.intro-film-still {
+  transform: scale(var(--film-scale));
+}
+
+/* The ease is a nicety, not the fix — the framing it lands on is what removes
+   the square — so reduced motion keeps the framing and drops the movement. */
+@media (prefers-reduced-motion: reduce) {
+  .intro-film[data-frame="settled"] .intro-film-image {
+    transition-duration: 1ms;
+  }
 }
 
 /* The field is knocked back so the wordmark has something to rise out of.
