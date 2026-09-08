@@ -5,5 +5,5 @@
 :HL["/Barbershop-/_next/static/media/86c8c58929c52757-s.p.3dq6enaul-s3b.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
 :HL["/Barbershop-/_next/static/media/910852303c6b2343-s.p.1wvhz6ut8au_x.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
 :HL["/Barbershop-/_next/static/media/da0c36c2f20008af-s.p.1o88h9hhck-f8.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
-:HL["/Barbershop-/_next/static/chunks/1f84-luwfc89y.css","style"]
-0:{"tree":{"name":"","param":null,"prefetchHints":4112,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":4224,"slots":null}}},"staleTime":300,"buildId":"m1ukxjnosnt5xQgf1UW5r"}
+:HL["/Barbershop-/_next/static/chunks/2r6shm2dldknv.css","style"]
+0:{"tree":{"name":"","param":null,"prefetchHints":4112,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":4224,"slots":null}}},"staleTime":300,"buildId":"UqwLnNJrj3dsPN96dvmsv"}
