@@ -7,15 +7,15 @@
    repaint the site.
    --------------------------------------------------------------------------- */
 @theme {
-  --color-ink: #241d18;
-  --color-ombre: #574a3e;
+  --color-ink: #332a22;
+  --color-ombre: #695b4c;
   --color-surface: #221c17;
   --color-raised: #2d251e;
   --color-gold: #c8a24a;
   --color-goldsoft: #e2c98a;
   --color-cream: #f1e9dc;
   --color-offwhite: #faf7f2;
-  --color-muted: #c8c2bb;
+  --color-muted: #d6d1ca;
   --color-hairline: rgba(241, 233, 220, 0.12);
   --color-intro: #c6bcb0;
 
